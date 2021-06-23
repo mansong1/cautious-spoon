@@ -1,5 +1,5 @@
 [package]
-name = "zero2prod"
+name = "api"
 version = "0.1.0"
 authors = ["Martin Ansong <martin.ansong@protonmail.com>"]
 edition = "2018"
