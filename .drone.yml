@@ -21,12 +21,12 @@ steps:
   depends_on:
   - format
   - lint
-- name: generate test report
-  image: xd009642/tarpaulin
-  commands:
-    - cargo tarpaulin --ignore-tests --out Xml
-  depends_on:
-    - test
+# - name: generate test report
+#   image: xd009642/tarpaulin
+#   commands:
+#     - cargo tarpaulin --ignore-tests --out Xml
+#   depends_on:
+#     - test
 trigger:
   branch:
     - main
@@ -41,14 +41,4 @@ steps:
   commands:
     - cargo install cargo-audit
     - cargo audit
-  when:
-    branch:
-    - main
-    event:
-    - push
-    - pull_request
-    - tag
-    - cron
-    cron: 
-      - nightly
 
