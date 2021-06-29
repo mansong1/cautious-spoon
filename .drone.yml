@@ -6,4 +6,45 @@ steps:
 - name: format
   image: rust:latest
   commands:
-    - rustup:format
+    - rustup component add rustfmt
+    - cargo fmt --all -- --check --color=always
+- name: lint
+  image: rust:latest
+  commands:
+    - rustup component add clippy
+    - cargo clippy -- -D warnings
+- name: test
+  image: rust:latest
+  commands:
+    - cargo install tarpaulin
+    - cargo build --verbose --all
+    - cargo test --verbose --all
+    - cargo tarpaulin --ignore-tests --out Xml
+  depends_on:
+    - format
+    - lint
+trigger:
+  branch:
+    - main
+---
+kind: pipeline
+type: docker
+name: audit
+
+steps:
+  - name: audit
+    image: rust:latest
+    commands:
+      - cargo install cargo-audit
+      - cargo audit
+    when:
+      branch:
+      - main
+      event:
+      - push
+      - pull_request
+      - tag
+      - cron
+      cron: 
+        - nightly
+
