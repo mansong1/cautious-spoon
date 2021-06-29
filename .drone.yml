@@ -25,6 +25,8 @@ steps:
   image: xd009642/tarpaulin
   commands:
     - cargo tarpaulin --ignore-tests --out Xml
+  depends_on:
+    - test
 trigger:
   branch:
     - main
