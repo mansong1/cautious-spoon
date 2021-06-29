@@ -1,5 +1,5 @@
 kind: pipeline
-type: docker
+type: kubernetes
 name: ci
 
 steps:
@@ -28,7 +28,7 @@ trigger:
     - main
 ---
 kind: pipeline
-type: docker
+type: kubernetes
 name: audit
 
 steps:
