@@ -1,0 +1,9 @@
+kind: pipeline
+type: docker
+name: ci
+
+steps:
+- name: format
+  image: rust:latest
+  commands:
+    - rustup:format
