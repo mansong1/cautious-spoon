@@ -16,13 +16,15 @@ steps:
 - name: test
   image: rust:latest
   commands:
-    - cargo install cargo-tarpaulin
     - cargo build --verbose --all
     - cargo test --verbose --all
-    - cargo tarpaulin --ignore-tests --out Xml
   depends_on:
-    - format
-    - lint
+  - format
+  - lint
+- name: generate test report
+  image: xd009642/tarpaulin
+  commands:
+    - cargo tarpaulin --ignore-tests --out Xml
 trigger:
   branch:
     - main
