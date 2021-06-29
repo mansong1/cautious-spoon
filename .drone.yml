@@ -32,19 +32,19 @@ type: docker
 name: audit
 
 steps:
-  - name: audit
-    image: rust:latest
-    commands:
-      - cargo install cargo-audit
-      - cargo audit
-    when:
-      branch:
-      - main
-      event:
-      - push
-      - pull_request
-      - tag
-      - cron
-      cron: 
-        - nightly
+- name: audit
+  image: rust:latest
+  commands:
+    - cargo install cargo-audit
+    - cargo audit
+  when:
+    branch:
+    - main
+    event:
+    - push
+    - pull_request
+    - tag
+    - cron
+    cron: 
+      - nightly
 
