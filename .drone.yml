@@ -8,11 +8,13 @@ steps:
   commands:
     - rustup component add rustfmt
     - cargo fmt --all -- --check --color=always
+
 - name: lint
   image: rust:latest
   commands:
     - rustup component add clippy
     - cargo clippy -- -D warnings
+
 - name: test
   image: rust:latest
   commands:
@@ -30,6 +32,8 @@ steps:
 trigger:
   branch:
     - main
+    - feature/*
+
 ---
 kind: pipeline
 type: docker
@@ -41,4 +45,10 @@ steps:
   commands:
     - cargo install cargo-audit
     - cargo audit
-
+trigger:
+  branch:
+    - main
+  event:
+  - cron
+  cron:
+  - nightly
