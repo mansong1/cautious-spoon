@@ -14,7 +14,7 @@ steps:
   image: rust:latest
   commands:
     - rustup component add clippy
-    - cargo clippy -- -D warnings
+    - cargo clippy
 
 - name: test
   image: rust:latest
