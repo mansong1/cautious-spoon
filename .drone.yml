@@ -51,5 +51,8 @@ steps:
 trigger:
   event:
   - cron
+  - push
   cron:
   - nightly
+  branch:
+    - main
