@@ -7,8 +7,8 @@ use std::net::TcpListener;
 
 #[derive(serde::Deserialize)] 
 struct FormData {
-    //email: String,
-    //name: String
+    email: String,
+    name: String
 }
 
 async fn health_check() -> impl Responder {
