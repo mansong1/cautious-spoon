@@ -25,7 +25,7 @@ steps:
   - format
   - lint
 - name: generate test report
-  image: xd009642/tarpaulin:0.18.0-slim
+  image: xd009642/tarpaulin:0.18.0
   commands:
     - cargo tarpaulin --ignore-tests --out Xml
   depends_on:
