@@ -47,12 +47,3 @@ steps:
   commands:
     - cargo install cargo-audit
     - cargo audit
-
-trigger:
-  event:
-  - cron
-  - pull_request
-  cron:
-  - nightly
-  branch:
-    - main
