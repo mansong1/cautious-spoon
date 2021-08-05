@@ -46,4 +46,4 @@ steps:
   image: rust:latest
   commands:
     - cargo install cargo-audit
-    - cargo audit --all -- --all --fail-on-error
+    - cargo audit
