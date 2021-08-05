@@ -24,12 +24,12 @@ steps:
   depends_on:
   - format
   - lint
-- name: generate test report
-  image: xd009642/tarpaulin:0.18.0
-  commands:
-    - cargo tarpaulin --ignore-tests --out Xml
-  depends_on:
-    - test
+# - name: generate test report
+#   image: xd009642/tarpaulin:0.18.0
+#   commands:
+#     - cargo tarpaulin --ignore-tests --out Xml
+#   depends_on:
+#     - test
 trigger:
   branch:
     - main
