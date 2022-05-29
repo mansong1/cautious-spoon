@@ -20,7 +20,7 @@ COPY . .
 # Build our application, leveraging the cached deps!
 RUN cargo build --release --bin api
 
-FROM debian:buster-slim AS runtime
+FROM debian:10.12-slim AS runtime
 WORKDIR /app
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends openssl \
